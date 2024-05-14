@@ -1,0 +1,10 @@
+# Currency calculator
+
+y = float(input("Give a rate: "))
+def counterEUDL(x):
+    if float(x) <= 0:
+        raise ValueError("Give a positive number")
+    else:
+        print(f"Euro vs Dollar: {float(x) * y}")
+        
+counterEUDL(((input("Give a number of Euros: "))))
