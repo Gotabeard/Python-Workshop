@@ -8,3 +8,15 @@ def counterEUDL(x):
         print(f"Euro vs Dollar: {float(x) * y}")
         
 counterEUDL(((input("Give a number of Euros: "))))
+
+#mailer
+
+    #info = "We couldn't verify your mother's maiden name."
+    #intro = "Here is important information about your account security."
+recepient = input(str("Enter your name: "))
+intro = input(str("Enter your subject: "))
+info = input(str("Enter your message: "))
+greeting = 'Hello'
+greet = (greeting + (", ") + (f"{recepient}") + ("!"))
+print(greet)
+print(intro + "\n" + info)
