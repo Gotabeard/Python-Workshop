@@ -1,0 +1,18 @@
+# Создайте класс Rectangle для представления прямоугольника.
+# Класс должен иметь атрибуты width (ширина) и height (высота),
+# а также метод calculate_area(), который вычисляет площадь прямоугольника.
+# Затем создайте экземпляр класса Rectangle с заданными значениями ширины и высоты и выведите его площадь.
+
+class Rectangle:
+    """представление прямоугольника"""
+
+    def calculate_area(self, width, height):
+        self.height = height
+        self.width = width
+        return height * width
+
+
+width = int(input("Enter width: "))
+height = int(input("Enter height: "))
+rectangle = Rectangle()
+print(f"The area is: {rectangle.calculate_area(width, height)}")
