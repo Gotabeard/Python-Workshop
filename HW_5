@@ -1,0 +1,74 @@
+# Напишите программу, которая генерирует случайное число от 1 до 100,
+# а затем предлагает пользователю угадать это число.
+# Если пользователь угадывает число, программа выводит сообщение о победе.
+# Если пользователь не угадывает число, программа сообщает,
+# больше или меньше загаданное число и предлагает попробовать снова.
+# Используйте цикл с инструкцией break, чтобы остановить выполнение цикла, когда число угадано.
+#
+#
+# Пример вывода:
+# Угадайте число от 1 до 100: 50
+# Загаданное число меньше.
+# Попробуйте снова: 75
+# Загаданное число больше.
+# Попробуйте снова: 63
+# Поздравляю! Вы угадали число 63!
+
+import random
+print("Hey, it's a randomizer!")
+num = random.randint(1, 100)
+print("I'm thinking of a number between 1 and 100")
+while True:
+    x = int(input("Enter your number: "))
+    print(f"Your number is {x}")
+    if x == num:
+        print("Congrats! Your number is equal to my number.")
+        break
+    elif x > num:
+        print("Your number is greater than my number.")
+    elif x < num:
+        print("Your number is less than my number.")
+
+# with a counter
+
+print("Hey, it's a randomizer!")
+num = random.randint(1, 100)
+print("I'm thinking of a number between 1 and 100")
+counter = 10
+while True:
+    counter -= 1
+    x = int(input("Enter your number: "))
+    print(f"Your number is {x}, you have {counter} tries")
+    if counter == 0:
+        print("Sorry, no more tries, you lost!")
+    elif x == num:
+        print("Congrats! Your number is equal to your number.")
+        break
+    elif x > num:
+        print("Your number is greater than my number.")
+    elif x < num:
+        print("Your number is less than my number.")
+
+
+# Напишите программу, которая запрашивает у пользователя число N и выводит первые N чисел Фибоначчи.
+# Числа Фибоначчи - это последовательность чисел, где каждое следующее число является суммой двух предыдущих чисел
+# (начиная с 0 и 1).
+# Используйте цикл while для решения задачи. Выведите числа через запятую с помощью команды print.
+#
+#
+# Пример вывода:
+# Введите число N: 7
+# Первые 7 чисел Фибоначчи: 0, 1, 1, 2, 3, 5, 8
+
+N = int(input('Enter a number: '))
+num_1 = 0
+num_2 = 1
+count = 0
+while count < N:
+    if count < N - 1:
+        print(num_1, end=", ")
+    else:
+        print(num_1)
+    num_1, num_2 = num_2, num_1 + num_2
+    count += 1
+
