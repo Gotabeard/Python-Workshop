@@ -72,3 +72,32 @@ while count < N:
     num_1, num_2 = num_2, num_1 + num_2
     count += 1
 
+
+# Напишите программу, которая запрашивает у пользователя целое положительное число
+# и проверяет, является ли оно простым.
+# Простое число - это число, которое делится только на 1 и на само себя без остатка.
+# Используйте цикл while и проверку деления числа на все числа от 2 до N-1 для решения задачи.
+# Выведите соответствующее сообщение на экран с помощью команды print.
+#
+# Пример вывода:
+# Введите целое положительное число: 17
+# Число 17 является простым.
+
+# num = int(input("Enter a whole number: "))
+# while num > 0:
+#     if num // 1 == num and num % num == 0:
+#         print("Your number is ordinary")
+#         break
+#     else:
+#         print("Your number is not ordinary")
+
+x = int(input("Enter a whole number: "))
+N = 2
+while x < N:
+    if x % N == 0:
+        print("Not a prime number")
+        break
+    else:
+        N += 1
+else:
+    print("Prime number")
