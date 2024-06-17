@@ -1,0 +1,32 @@
+"""
+1. Напишите функцию extract_emails(text),
+которая извлекает все адреса электронной почты из заданного текста и возвращает их в виде списка.
+Пример использования:
+text = "Contact us at info@example.com or support@example.com for assistance."
+emails = extract_emails(text)
+print(emails)  # Вывод: ['info@example.com', 'support@example.com']"
+"""
+
+import re
+
+
+def mail_extractor(text):
+    with open(text, 'r', encoding='UTF-8') as f:
+        text = f.read()
+        emails_ext = re.findall(r'\S+@\S+', text)
+        print(emails_ext)
+    print("Done")
+
+
+emails_list = input("Insert the link to your text file: ")
+mail_extractor(f"{emails_list}")
+
+The training text: 
+In today's world, communication is key, and email remains a vital part of our daily interactions. For instance, professionals like john.doe@example.com and jane.smith@company.org rely on email to coordinate their projects. Meanwhile, freelancers such as freelance.writer@outlook.com and graphic.designer@gmail.com use their email addresses to communicate with clients and deliver their services.
+When it comes to customer support, companies like support@techsolutions.com and helpdesk@serviceprovider.net are crucial for assisting users with their queries. Similarly, sales teams often use addresses like sales@ecommercestore.com and inquiries@retailshop.biz to handle customer inquiries and sales leads.
+Educational institutions also depend heavily on email, with professors and students frequently corresponding via addresses like prof.jones@university.edu and student.jane@college.edu. Alumni networks maintain contact through emails such as alumni@school.org and events@alumninetwork.com.
+In the tech world, developers and IT professionals might use addresses like dev.team@softwarehouse.io and sysadmin@networkservices.co to collaborate and troubleshoot issues. On the other hand, marketing teams utilize emails such as marketing@digitalagency.com and campaigns@promotions.net to launch and manage marketing campaigns.
+Non-profit organizations and charities keep their donors informed through emails like info@charityfoundation.org and donations@nonprofitcause.com. Community groups might use addresses like community.leader@localgroup.com and events@neighborhood.org to organize events and activities.
+Even in personal life, individuals use email for various purposes. Friends and family keep in touch via addresses like john.family@home.com and friend.jane@mail.net. Hobbies and interest groups often communicate through emails such as bookclub@readers.com and gardeners@hobbygroup.org.
+Moreover, newsletters and subscriptions are sent from addresses like newsletter@updates.com and subscribe@newsletters.net, providing recipients with regular updates and information.
+Lastly, job seekers use emails like resume@jobhunter.com and application@careeropportunities.net to apply for positions and connect with potential employers.
