@@ -24,3 +24,15 @@ def highlighter(text, keyword):
 
 
 highlighter('E:\PyCharm\Python_Found\Lesson_34_Regular expressions\highlight.txt', 'keyword')
+
+
+"""
+Text for checking:
+When optimizing your website for search engines, choosing the right KEYWORD is crucial. 
+The keyword should be relevant to your content and audience. 
+Proper keyword research helps in identifying the best KEYWORD that will drive traffic to your site. 
+Once you have your KEYWORD, use it strategically in your content, ensuring that the keyword appears in titles, headings, 
+and throughout the body of your text. However, avoid KEYWORD stuffing, as it can harm your SEO efforts. 
+The key is to maintain a natural flow while still highlighting the keyword effectively. 
+By focusing on the right KEYWORD, you can improve your site's visibility and attract more visitors.
+"""
