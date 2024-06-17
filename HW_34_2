@@ -1,0 +1,26 @@
+"""
+Напишите функцию highlight_keywords(text, keywords),
+которая выделяет все вхождения заданных ключевых слов в тексте,
+окружая их символами *. Функция должна быть регистронезависимой
+при поиске ключевых слов.
+
+Пример использования:
+text = "This is a sample text. We need to highlight Python and programming."
+keywords = ["python", "programming"]
+highlighted_text = highlight_keywords(text, keywords)
+print(highlighted_text)
+# Вывод: "This is a sample text. We need to highlight *Python* and *programming*.
+"""
+
+import re
+
+
+def highlighter(text, keyword):
+    with open(text, 'r') as file:
+        text = file.read()
+        txt_highlight = re.sub(keyword, '***keyword***', text, flags=re.IGNORECASE)
+        print(txt_highlight)
+    print(text)
+
+
+highlighter('E:\PyCharm\Python_Found\Lesson_34_Regular expressions\highlight.txt', 'keyword')
