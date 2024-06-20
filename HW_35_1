@@ -1,0 +1,17 @@
+#Primitive parcer
+
+import requests
+
+
+def get_response(url):
+    response = requests.get(url)
+    print(f"Your status code: {response.status_code}")
+    print(f"Response headers: {response.headers}")
+    content = response.text
+    for tag in content.split('\n'):
+        if tag.startswith('<p'):
+            print(f"{tag}")
+
+
+request = str(input("Enter your url: "))
+get_response(request)
