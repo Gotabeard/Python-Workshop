@@ -1,0 +1,33 @@
+import requests
+import re
+
+
+def get_response(url):
+    response = requests.get(url)
+    # print(f"Your status code: {response.status_code}")
+    # print(f"Response headers: {response.headers}")
+    text = response.text
+    for tag in text.split('\n'):
+        if tag.startswith('<p') and tag.endswith('>'):
+            # tag = re.sub(r'<a href="(/wiki/[^"]+)" title="([^"]+)">', "", tag, flags=re.IGNORECASE)
+            # tag = re.sub(r'</a>', "", tag, flags=re.IGNORECASE)
+            # tag = re.sub('<sup', "", tag)
+            # tag = re.sub('<a href=', "", tag)
+            # tag = re.sub(r'id="([^"]+)" class="reference">', "", tag, flags=re.IGNORECASE)
+            # tag = re.sub(r'#cite_note-[^"]*">&#91;\d+&#93;', "", tag)
+            # tag = re.sub(r'"</sup>', "", tag)
+            # tag = re.sub(r'<i>The Sporting News</i><span class="nowrap" style="padding-left:0.1em;">&#39;</span>s', "", tag)
+            # tag = re.sub(r'"/wiki/[^"]+"\s+class="mw-redirect"\s+title="[^"]+">', '', tag)
+            # tag = re.sub(r'<p>', "", tag)
+            # tag = re.sub(r'</p>', "", tag)
+            # tag = re.sub(r'<p class="mw-empty-elt">', "", tag)
+            # tag = re.sub(r'<b>', "", tag)
+            # tag = re.sub(r'</b>', "", tag)
+            # tag = re.sub(r'&#+\d', "", tag)
+            # tag = re.sub(r'<i>', "", tag)
+            # tag = re.sub(r'</i>', "", tag)
+            # tag = re.sub(r'#cite_note-\d+">\d+;f\d+;</sup>', "", tag)
+            print(tag)
+
+
+get_response("https://en.wikipedia.org/wiki/Westfield,_Alabama")
