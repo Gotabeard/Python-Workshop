@@ -1,0 +1,61 @@
+import mysql.connector
+from config_ich_edit import dbconfig
+
+
+def db_connector():
+    try:
+        con = mysql.connector.connect(**dbconfig)
+        return con
+    except mysql.connector.Error as err:
+        raise ConnectionError('Database connection failed')
+
+
+def db_cursor(con):
+    cursor = con.cursor()
+    db = input("Database Name: ")
+    cursor.execute(f"USE {db}")
+
+
+def fetch_all_query(con, query):
+    try:
+        cursor = con.cursor()
+        cursor.execute(query)
+
+        response = cursor.fetchall()
+        return response
+
+    except mysql.connector.Error as err:
+        print(f"Ошибка MySQL: {err}")
+        return None
+    finally:
+        cursor.close()
+
+
+def print_query(response):
+    if response is None:
+        print("No data found")
+    else:
+        for row in response:
+            print(row)
+
+
+def main_func():
+    con = db_connector()
+    db_cursor(con)
+    table = input("Enter your table (Product | Users | Sales): ")
+    query = f"SELECT * FROM {table}"
+    if con:
+        response = fetch_all_query(con, query)
+        if response:
+            print_query(response)
+        else:
+            print("No data found")
+        con.close()
+    else:
+        print("No data found")
+
+
+if __name__ == "__main__":
+    main_func()
+
+
