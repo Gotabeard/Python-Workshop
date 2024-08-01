@@ -30,3 +30,22 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+-----------
+""" multiplication by X """
+
+def arr_multi_x(N, x):
+    arr = np.random.randint(101, size = N)
+    print("Your array is below:")
+    print(arr)
+    return(arr*x)
+
+def main():
+    N = int(input("Enter the length of the arrays: "))
+    x = int(input("Enter a multiplicator: "))
+    result = arr_multi_x(N, x)
+    print("Result of their multiplication is:", f"{result}", sep='\n')
+
+if __name__ == '__main__':
+    main()
+
