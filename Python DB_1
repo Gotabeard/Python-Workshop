@@ -1,0 +1,32 @@
+import numpy as np
+------------
+""" addition of the arrays """ 
+def list2array_add(x, y):
+    arr_1 = np.array(list(map(int, x.split())))
+    arr_2 = np.array(list(map(int, y.split())))
+    return(arr_1 + arr_2)
+
+def main():
+    print("Enter two arrays with spaces to sum them")
+    x = input("Three elements with spaces inbetween: ")
+    y = input("Another three elements with spaces inbetween: ")
+    print(f"Your result is: {list2array_add(x,y)}")
+
+if __name__ == '__main__':
+    main()
+
+-----------
+""" multiplication of the arrays """
+def arr_multi(N):
+    x = a = np.random.randint(1, 11, size = N)
+    b = np.random.randint(1, 11, size = N)
+    print("Your arrays are below:")
+    print(a,b, sep= '\n')
+    return(a*b)
+
+def main():
+    result = arr_multi(int(input("Enter the length of the arrays: ")))
+    print("Result of their multiplication is:", f"{result}", sep='\n')
+
+if __name__ == '__main__':
+    main()
