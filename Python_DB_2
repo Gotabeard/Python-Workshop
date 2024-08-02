@@ -49,22 +49,22 @@ if __name__ == '__main__':
 ----------
 ''' Operations with matrices '''
 
-def mtx_gen(M,N):
+def mtx_gen(M,N): #MATRIX GENERATOR
     mtx_1 = np.random.randint(0, 10, (M, N))
     mtx_2 = np.random.randint(0, 10, (N, M))
     return f"Matrix 1: \n{mtx_1}\nMatrix 2: \n{mtx_1}"
 
 
-def mtx_multi(mtx_1,mtx_2):
+def mtx_multi(mtx_1,mtx_2): #MATRIX MULTIPLICATOR
     result_multi = np.dot(mtx_1, mtx_2)
     return f'\nMultiplied: \n{result_multi}'
 
 
-def mtx_sum(mtx_1, mtx_2):
+def mtx_sum(mtx_1, mtx_2): #SUM MATRICES
     return f'\n{sum(mtx_1 + mtx_2)}'
 
 
-def mtx_trans(mtx):
+def mtx_trans(mtx): #TRANSPOSE A MATRIX
     return mtx.T
 
 
