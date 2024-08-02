@@ -1,3 +1,4 @@
+''' Operations with arrays ''' 
 def str2array(str): #STRING TO ARRAY
     array = np.array(list(map(int, str.split())))
     print(f"Your array is: {array}. Its len is {len(array)}")
@@ -37,6 +38,65 @@ def main():
             x = int(input("Enter the start of slice: "))
             y = int(input("Enter the end of slice: "))
             print(array_slicer(array, x, y))
+        else:
+            break
+
+
+if __name__ == '__main__':
+    main()
+
+
+----------
+''' Operations with matrices '''
+
+def mtx_gen(M,N):
+    mtx_1 = np.random.randint(0, 10, (M, N))
+    mtx_2 = np.random.randint(0, 10, (N, M))
+    return f"Matrix 1: \n{mtx_1}\nMatrix 2: \n{mtx_1}"
+
+
+def mtx_multi(mtx_1,mtx_2):
+    result_multi = np.dot(mtx_1, mtx_2)
+    return f'\nMultiplied: \n{result_multi}'
+
+
+def mtx_sum(mtx_1, mtx_2):
+    return f'\n{sum(mtx_1 + mtx_2)}'
+
+
+def mtx_trans(mtx):
+    return mtx.T
+
+
+def main():
+    while True:
+        print("Let's generate two matrices")
+        M = int(input('Enter 1st parameter (lines): '))
+        N = int(input('Enter 2nd parameter (columns): '))
+        print(mtx_gen(M,N))
+        print("""Choose your option: 
+    1 - multiply matrices
+    2 - sum matrices
+    3 - transpose the matrix 
+    4 - exit """)
+        option = int(input("Enter a digit: "))
+        if option == 1:
+            print(mtx_multi(mtx_1, mtx_2))
+        elif option == 2:
+            if M == N:
+                print(f'The sum of matrices is: {mtx_sum(mtx_1, mtx_2)}')
+            else:
+                print('Matrices should have equal size, change parameters')
+        elif option == 3:
+            print("""Which matrix do you want to transpose:
+    1 - 1st matrix
+    2 - 2nd matrix
+    """)
+            mtx = int(input("Enter a digit: "))
+            if mtx == 1:
+                print(f'The matrix has been transposed: \n{mtx_trans(mtx_1)}')
+            else:
+                print(f'The matrix has been transposed: \n{mtx_trans(mtx_2)}')
         else:
             break
 
