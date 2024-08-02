@@ -1,0 +1,45 @@
+def str2array(str): #STRING TO ARRAY
+    array = np.array(list(map(int, str.split())))
+    print(f"Your array is: {array}. Its len is {len(array)}")
+    return(array) 
+
+
+def array_get_element(array, x): #GET AN ELEMENT OF THE ARRAY
+    if x < 0 or x > len(array):
+        raise ValueError ("Your digit exeeds the array's size")
+    else: 
+        return (f'Your element is: {array[x]}')
+
+
+def array_slicer(array, start, end): #GET A SLICE OF THE ARRAY
+    if start < 0: 
+        raise ValueError ("Your starting point must be equal to 0 or more")
+    elif end < 0 or end > len(array):
+        raise ValueError ("Your ending point exeeds the array's size")
+    else:
+        return f'Your slice is {array[start:end]}'
+
+
+def main():
+    
+    while True:
+        array = str2array(input("Enter your array: "))
+        print(
+    """Choose your option: 
+    1 - get an element
+    2 - get a slice
+    3 - exit """)
+        user_choice = int(input("Enter a digit: "))
+        if user_choice == 1:
+            x = int(input("Enter the position of the element you need: "))
+            print(array_get_element(array, x))
+        elif user_choice == 2:
+            x = int(input("Enter the start of slice: "))
+            y = int(input("Enter the end of slice: "))
+            print(array_slicer(array, x, y))
+        else:
+            break
+
+
+if __name__ == '__main__':
+    main()
