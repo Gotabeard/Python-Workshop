@@ -1,0 +1,27 @@
+def data2series(data):
+    data_pd = pd.Series(data)
+    return data_pd
+
+def gen_abc_index(n):    
+    indices = []
+    letters = list(string.ascii_lowercase)
+    for i in range(n):
+        index = ""
+        j = i
+        while j >= 0:
+            index = letters[j % 26] + index
+            j = j // 26 - 1
+        indices.append(index)
+    return indices
+
+def assign_abc_index(series):
+    alphabet_indices = gen_abc_index(len(series))
+    series.index = alphabet_indices
+    return series
+
+def main():
+    data = np.array(input("Enter your digits: ").split())
+    s = data2series(data)
+    return assign_abc_index(s)
+
+init 
