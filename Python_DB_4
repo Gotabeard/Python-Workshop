@@ -1,3 +1,9 @@
+1. 
+
+import numpy as np
+import pandas as pd 
+import string
+
 def data2series(data):
     data_pd = pd.Series(data)
     return data_pd
@@ -24,4 +30,6 @@ def main():
     s = data2series(data)
     return assign_abc_index(s)
 
-init 
+
+if __name__ == '__main__':
+    main()
