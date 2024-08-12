@@ -24,8 +24,8 @@ def gen_abc_index(n):
     return indices
 
 def assign_abc_index(series):
-    alphabet_indices = gen_abc_index(len(series))
-    series.index = alphabet_indices
+    abc_indices = gen_abc_index(len(series))
+    series.index = abc_indices
     return series
 
 def main():
