@@ -33,6 +33,38 @@ def main():
     s = data2series(data)
     return assign_abc_index(s)
 
+if __name__ == '__main__':
+    main()
+
+2. Создание и индексация DataFrame: Напишите программу, которая:
+Запрашивает у пользователя данные для создания DataFrame. Данные включают в себя имена столбцов и строки значений, вводимые через пробел.
+Создает DataFrame с использованием введенных данных.
+Выводит созданный DataFrame на экран.
+Запрашвает у пользователя имя столбца, по которому необходимо отфильтровать данные.
+Выводит значения указанного столбца.
+
+def create_frame():
+    col1 = input("Enter a name for the col1: ")
+    col2 = input("Enter a name for the col2: ")
+    col3 = input("Enter a name for the col3: ")
+    data1 = input("Enter data for the col1: ").split()
+    data2 = input("Enter data for the col1: ").split()
+    data3 = input("Enter data for the col1: ").split()
+
+    data = {f"{col1}" : data1,
+            f"{col2}" : data2,
+            f"{col3}" : data3}
+    frame = pd.DataFrame(data)
+    return frame
+
+def get_col(frame):
+    col = input("Enter a name of a col: ")
+    return frame[f'{col}']
+
+def main():
+    frame = create_frame()
+    result = get_col(frame)
+    return result
 
 if __name__ == '__main__':
     main()
