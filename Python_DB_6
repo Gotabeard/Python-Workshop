@@ -1,0 +1,51 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+#crosstabs 
+data = { 'Name': ['Анна', 'Антон', 'Мария', 'Макс', 'Макс', 'Алекс', 'Антон', 'Мария', 'Макс', 'Алекс', 'Антон', 'Анна'], 
+'Game': ['тетрис', 'змейка', 'змейка', 'тетрис', 'тетрис', 'змейка', 'тетрис', 'тетрис', 'тетрис', 'змейка', 'змейка', 'тетрис'], 
+'Points': [145, 2524, 343, 4212, 5212, 6421, 745, 842, 524, 3224, 212, 1214] }
+
+df = pd.DataFrame(data)
+df
+
+pd.pivot_table(df,
+               values='Points',
+               index='Name',
+               columns='Game',
+               aggfunc='mean').round(1)
+
+
+
+#flats' energy consumption visualization
+
+data = np.random.uniform(100, 1000, 6)
+data.round(2)
+
+#pie chart
+
+flats = ['101', '102', '103', '201', '202', '203']
+colors = ['#a83232','#a86632','#6fa832','#32a873', '#3269a8','#a832a0']
+consumption = data.round(2)
+plt.pie(consumption, labels=flats, colors=colors, autopct='%.2f%%', shadow=True, startangle=20, radius=1.2, center=(0,100))
+plt.axis('auto')
+plt.legend(consumption, loc='best', title='kW', bbox_to_anchor=(1, 1))
+plt.title("Energy consumption", fontsize=15)
+plt.show()
+
+#bar chart
+
+flats  = ['101', '102', '103', '201', '202', '203']
+colors = ['#a83232','#a86632','#6fa832','#32a873', '#3269a8','#a832a0']
+consumption = data.round(2)
+
+plt.bar(flats, consumption, color=colors, alpha=0.9, picker=True)
+
+plt.grid(alpha=0.2)
+plt.gca().yaxis.set_minor_locator(AutoMinorLocator())
+plt.title('Energy consumption')
+plt.xlabel('Flats')
+plt.ylabel('Consumption, kW')
+plt.show()
