@@ -1,0 +1,30 @@
+# Изобразите на одной системе координат графики функций y=sin(x) и y=log(x+1). Используйте две оси Y: одну для первого графика, и вторую для другого.
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+x = np.linspace(0,10,100)
+y1 = np.sin(x)
+y2 = np.log(x+1)
+
+plt.figure(figsize = (12, 5))
+
+
+plt.plot(x,y1, color='grey', linewidth=5, alpha=0.5)
+plt.plot(x,y1, label='y=sin(x)', color='black', linewidth=1)
+plt.ylabel('y=sin(x)', fontsize=15, fontstyle='italic')
+plt.yticks(np.arange(-1.0, 1.1, 0.5))
+plt.legend(loc='upper left')
+
+plt.twinx()
+plt.plot(x,y2, label='y=log(x+1)', color='green', linewidth=1)
+plt.plot(x,y2, color='red', linewidth=5, alpha=0.3)
+plt.ylabel('y=log(x+1)', color='red', alpha=0.7, fontsize=15, fontstyle='italic')
+plt.yticks(np.arange(0, 3.1, 0.5))
+plt.legend(loc='upper right')
+
+
+
+plt.title("Graphics: log(x+1) & sin(x)", fontsize=15)
+plt.grid(color='grey', linestyle='--', alpha=0.5)
