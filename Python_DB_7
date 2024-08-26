@@ -28,3 +28,19 @@ plt.legend(loc='upper right')
 
 plt.title("Graphics: log(x+1) & sin(x)", fontsize=15)
 plt.grid(color='grey', linestyle='--', alpha=0.5)
+
+
+
+#В датафрейме ниже представлены результаты соревнований: для каждого игрока указано  набранное количество очков в нескольких попытках.
+
+data = {'Name': ['Анна', 'Антон', 'Мария', 'Макс', 'Макс', 'Алекс', 'Антон', 'Мария', 'Макс', 'Алекс', 'Антон', 'Анна'],
+     'Points': [145, 2524, 343, 4212, 5212, 6421, 745, 842, 524, 3224, 212, 1214]}
+
+df = pd.DataFrame(data)
+
+agg_points = df.groupby('Name')['Points'].agg(['mean', 'min', 'max']) #.sort_values(['Points'], ascending= False)
+agg_points
+
+colors = ['#4E9A06', '#FF6347', '#1F75FE', '#FFB6C1', '#8A2BE2']
+fig, ax = plt.subplots(figsize=(10,6))
+agg_points.plot(kind='area', color=colors, ax=ax)
