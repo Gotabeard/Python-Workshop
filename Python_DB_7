@@ -33,14 +33,42 @@ plt.grid(color='grey', linestyle='--', alpha=0.5)
 
 #В датафрейме ниже представлены результаты соревнований: для каждого игрока указано  набранное количество очков в нескольких попытках.
 
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+colors = ['#4E9A06', '#FF6347', '#1F75FE', '#FFB6C1', '#8A2BE2']
 data = {'Name': ['Анна', 'Антон', 'Мария', 'Макс', 'Макс', 'Алекс', 'Антон', 'Мария', 'Макс', 'Алекс', 'Антон', 'Анна'],
-     'Points': [145, 2524, 343, 4212, 5212, 6421, 745, 842, 524, 3224, 212, 1214]}
+'Points': [145, 2524, 343, 4212, 5212, 6421, 745, 842, 524, 3224, 212, 1214]}
 
 df = pd.DataFrame(data)
 
-agg_points = df.groupby('Name')['Points'].agg(['mean', 'min', 'max']) #.sort_values(['Points'], ascending= False)
+agg_points = df.groupby('Name')['Points'].agg(['mean', 'min', 'max']).round(0) 
+agg_points = agg_points[['mean','min','max']].astype((int))
 agg_points
 
-colors = ['#4E9A06', '#FF6347', '#1F75FE', '#FFB6C1', '#8A2BE2']
+
 fig, ax = plt.subplots(figsize=(10,6))
-agg_points.plot(kind='area', color=colors, ax=ax)
+
+agg_points.plot(kind='area', color=colors, ylim=(0, max(agg_points['max'] + 500)), stacked=False, ax=ax)
+plt.grid(color='grey', alpha=0.2)
+
+#points in scatter
+for col in agg_points.columns:
+    ax.scatter(agg_points.index, agg_points[col], color='black', marker='*')
+
+#values in scatter
+for col in agg_points.columns:
+     for index, value in enumerate(agg_points[col]):
+        ax.text(index + 0.15, value, int(value), color='black', ha='center', va='top', fontsize=8, fontweight='bold')
+
+#labelling & ticks
+ax.set_xticks(range(agg_points.shape[0]))
+ax.tick_params(axis='x', color='grey', labelsize=10, width=5)
+ax.set_xlabel('')
+
+ax.tick_params(left=False, labelleft=False)
+
+#title
+plt.title('Contest results', fontsize=15, fontweight='bold', color='grey', alpha=0.5)
+plt.show()
