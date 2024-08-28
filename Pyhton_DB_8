@@ -1,0 +1,57 @@
+# importing pandas & numpy
+import pandas as pd
+import numpy as np
+
+# importing libs 
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+#importing dataset
+data = pd.read_csv('/content/fmri.csv')
+df = pd.DataFrame(data)
+df
+
+# 1 Task all events at the timepoint 5 
+
+colors = ['green', 'red']
+
+df_mean = df.loc[df['timepoint'] == 5].groupby('event').mean(['signal']).reset_index()
+df_mean = df_mean[['event', 'signal']]
+df_mean
+
+#visualization
+ax = df_mean.plot.bar(x='event', y='signal', color=colors, legend=False, rot=0, title='Mean value of signals at the timepoint 5', xlabel='event', ylabel='signal')
+ax.tick_params(which='major', pad=10)
+ax.set_yticks(np.arange(0, 0.35, 0.025), minor=True)
+ax.tick_params(which='minor', direction='out', length=5, pad=10)
+ax.grid(color='grey', alpha=0.2)
+
+# 2 Task all signals at the exact timepoint on the region 
+df_region = df.groupby(['region', 'timepoint']).mean(['signal']).reset_index()
+
+#visualization
+ax = sns.pointplot(x='timepoint', y='signal', hue='region', data=df_region, markers=['o', 's', 'D'])
+ax.set_yticks(np.arange(0, 0.20, 0.025), minor=True)
+ax.tick_params(which='minor', direction='out', length=5, pad=10)
+ax.grid(color='grey', alpha=0.2)
+ax.legend(loc='upper right', title='Region')
+
+plt.title('Mean value of signals in each timepoint depending on the region')
+ax.set_xlabel('timepoint')
+ax.set_ylabel('signal')
+
+# 3 Tasks Mean responses per subjet at the exact timepoint *FacetGrid*
+'''signal_time_subject'''
+sts = df.groupby(['subject','timepoint', 'event'])['signal'].agg(['min', 'median', 'mean', 'max']).reset_index()
+sts
+
+#visualization
+xlim = (0, 21)
+facets = sns.FacetGrid(sts, col='subject', col_wrap= 3, xlim=xlim)
+facets.map(sns.lineplot, 'timepoint', 'mean', hue='event', data=sts, linestyle='--')
+
+facets.refline(y=0, linestyle='-', color='grey', alpha=0.5)
+facets.add_legend(loc='upper right', title='Event')
+facets.set_titles(col_template="Results of the subject: {col_name}")
+facets.set_axis_labels(x_var='Timepoint', y_var='Mean response')
+
